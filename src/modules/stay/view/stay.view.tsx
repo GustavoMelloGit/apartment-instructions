@@ -79,6 +79,10 @@ export const StayView: FC<Props> = ({ stay }) => {
               <a className='underline' href='tel:+5528999849054'>
                 +55 28 99984-9054
               </a>
+              <br />A sua senha para entrar no apartamento é{' '}
+              <strong>{stay.password}</strong>. Não se preocupe, essa senha é
+              gerada para cada inquilino e deixa de funcionar imediatamente após
+              o horário de check-out do mesmo.
             </p>
           </div>
           <div>
