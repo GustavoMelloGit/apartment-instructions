@@ -10,6 +10,7 @@ export const getStayOutputSchema = z.object({
   guests: z.number(),
   check_in: z.coerce.date(),
   check_out: z.coerce.date(),
+  password: z.string(),
 });
 
 export type GetStayOutput = z.infer<typeof getStayOutputSchema>;

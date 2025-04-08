@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "6f09d573-2d95-4e04-a947-1af0657bd70b",
+  "id": "818f59a9-4a91-4774-b4a6-de81b99e7540",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "guests": {
@@ -66,6 +66,14 @@
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
+        },
+        "password": {
+          "name": "password",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "''"
         },
         "check_in": {
           "name": "check_in",

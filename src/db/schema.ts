@@ -12,6 +12,7 @@ export const stays = sqliteTable('stays', {
   guest_id: text('guest_id')
     .notNull()
     .references(() => guests.id),
+  password: text('password').notNull().default(''),
   check_in: text('check_in').notNull(),
   check_out: text('check_out').notNull(),
 });
