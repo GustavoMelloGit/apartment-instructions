@@ -1,4 +1,5 @@
 import { Separator } from '@/components/ui/separator';
+import { Info, MapPinned, ScrollText } from 'lucide-react';
 import { FC } from 'react';
 import { GetStayOutput } from '../services/stay.dto';
 
@@ -30,10 +31,13 @@ export const StayView: FC<Props> = ({ stay }) => {
         </h2>
       </div>
 
-      <div className='text-sm space-y-3 [&>section]:space-y-2 [&_h4]:font-bold [&_h4]:text-md'>
+      <div className='text-sm space-y-3 [&>section]:space-y-2 [&_h4]:font-bold [&_h4]:text-md [&_.title]:flex [&_.title]:gap-1 [&_.title]:items-center'>
         <section>
           <div>
-            <h3 className='text-lg font-black'>Sobre como chegar</h3>
+            <div className='title'>
+              <MapPinned size={18} />
+              <h3 className='text-lg font-black'>Sobre como chegar</h3>
+            </div>
             <Separator />
           </div>
 
@@ -87,7 +91,10 @@ export const StayView: FC<Props> = ({ stay }) => {
         </section>
         <section>
           <div>
-            <h3 className='text-lg font-black'>Regras</h3>
+            <div className='title'>
+              <ScrollText size={18} />
+              <h3 className='text-lg font-black'>Regras</h3>
+            </div>
             <Separator />
           </div>
           <ul>
@@ -111,7 +118,10 @@ export const StayView: FC<Props> = ({ stay }) => {
         </section>
         <section>
           <div>
-            <h3 className='text-lg font-black'>Instruções extras</h3>
+            <div className='title'>
+              <Info size={18} />
+              <h3 className='text-lg font-black'>Instruções extras</h3>
+            </div>
             <Separator />
           </div>
           <div>
