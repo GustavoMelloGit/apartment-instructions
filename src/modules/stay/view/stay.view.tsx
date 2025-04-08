@@ -115,11 +115,12 @@ export const StayView: FC<Props> = ({ stay }) => {
             <Separator />
           </div>
           <div>
-            <h4>Sobre a fechadura eletrônica</h4>
+            <h4>Fechadura eletrônica</h4>
             <div>
               <p>
-                A fechadura eletrônica é muito segura e prática, porém fique
-                atento às seguintes observações:
+                A fechadura eletrônica é muito segura e prática e para
+                utilizá-la da forma correta, fique atento às seguintes
+                observações:
               </p>
               <ul>
                 <li>
