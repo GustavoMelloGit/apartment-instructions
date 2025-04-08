@@ -5,7 +5,6 @@ export const getStayOutputSchema = z.object({
   guest: z.object({
     id: z.string(),
     name: z.string(),
-    email: z.string(),
   }),
   guests: z.number(),
   check_in: z.coerce.date(),

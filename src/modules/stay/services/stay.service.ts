@@ -10,10 +10,10 @@ export async function getStay(stay_id: string): Promise<GetStayOutput> {
       check_in: stays.check_in,
       check_out: stays.check_out,
       guests: stays.guests,
+      password: stays.password,
       guest: {
         id: guests.id,
         name: guests.name,
-        email: guests.email,
       },
     })
     .from(stays)
