@@ -1,11 +1,15 @@
-export type GetStayOutput = {
-  id: string;
-  guest: {
-    id: string;
-    name: string;
-    email: string;
-  };
-  guests: number;
-  check_in: Date;
-  check_out: Date;
-};
+import { z } from 'zod';
+
+export const getStayOutputSchema = z.object({
+  id: z.string(),
+  guest: z.object({
+    id: z.string(),
+    name: z.string(),
+    email: z.string(),
+  }),
+  guests: z.number(),
+  check_in: z.coerce.date(),
+  check_out: z.coerce.date(),
+});
+
+export type GetStayOutput = z.infer<typeof getStayOutputSchema>;

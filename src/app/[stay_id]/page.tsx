@@ -1,4 +1,4 @@
-import { StayService } from '@/modules/stay/services/stay.service';
+import { getStay } from '@/modules/stay/services/stay.service';
 import { StayView } from '@/modules/stay/view/stay.view';
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 
 export default async function StayPage({ params }: Props) {
   const { stay_id } = await params;
-  const stay = await StayService.get(stay_id);
+  const stay = await getStay(stay_id);
 
   return <StayView stay={stay} />;
 }
