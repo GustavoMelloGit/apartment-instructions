@@ -24,7 +24,6 @@ export async function getStay(stay_id: string): Promise<GetStayOutput> {
 
   const stay = result[0];
 
-  console.log({ stay });
   const parsedStay = getStayOutputSchema.parse(stay);
 
   return parsedStay;
