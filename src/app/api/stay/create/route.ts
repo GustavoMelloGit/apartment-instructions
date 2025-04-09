@@ -1,6 +1,3 @@
-import { db } from '@/db/connection';
-import { guests, stays } from '@/db/schema';
-import { eq } from 'drizzle-orm';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 

@@ -1,28 +1,20 @@
-import { db } from '@/db/connection';
-import { guests, stays } from '@/db/schema';
-import { eq } from 'drizzle-orm';
+'use server';
+
+import { createClient } from '@/db/supabase/server';
 import { GetStayOutput, getStayOutputSchema } from './stay.dto';
 
 export async function getStay(stay_id: string): Promise<GetStayOutput> {
-  const result = await db
-    .select({
-      id: stays.id,
-      check_in: stays.check_in,
-      check_out: stays.check_out,
-      guests: stays.guests,
-      password: stays.password,
-      guest: {
-        id: guests.id,
-        name: guests.name,
-      },
-    })
-    .from(stays)
-    .where(eq(stays.id, stay_id))
-    .innerJoin(guests, eq(stays.guest_id, guests.id));
+  const supabase = await createClient();
+  const result = await supabase
+    .from('stays')
+    .select('*')
+    .eq('id', stay_id)
+    .single();
 
-  if (!result || !result.length) throw new Error('Stay not found');
+  console.log({ result, stay_id });
+  const { data: stay } = result;
 
-  const stay = result[0];
+  if (result.error || !stay) throw new Error('Stay not found');
 
   const parsedStay = getStayOutputSchema.parse(stay);
 
