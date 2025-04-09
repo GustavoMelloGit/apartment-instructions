@@ -1,5 +1,5 @@
-import { db } from '@/db/connection';
-import { guests } from '@/db/schema';
+import { db } from '@/db/firebase';
+import { addDoc, collection } from 'firebase/firestore';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 
@@ -25,7 +25,7 @@ export async function POST(request: Request): Promise<Response> {
       name: data.name,
       phone: data.phone,
     };
-    await db.insert(guests).values(guest);
+    await addDoc(collection(db, 'guests'), guest);
 
     return NextResponse.json(
       {

@@ -1,3 +1,5 @@
+import { db } from '@/db/firebase';
+import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 
@@ -22,12 +24,10 @@ export async function POST(request: Request): Promise<Response> {
   const { data } = parsedInput;
 
   try {
-    const guest = await db
-      .select()
-      .from(guests)
-      .where(eq(guests.id, data.guest_id));
+    const q = query(collection(db, 'guests'), where('id', '==', data.guest_id));
+    const querySnapshot = await getDocs(q);
 
-    if (!guest.length) {
+    if (querySnapshot.empty) {
       return NextResponse.json({ error: 'Guest not found' }, { status: 404 });
     }
 
@@ -39,7 +39,7 @@ export async function POST(request: Request): Promise<Response> {
       guests: data.guests,
       password: data.password,
     };
-    await db.insert(stays).values(stay);
+    await addDoc(collection(db, 'stays'), stay);
 
     return NextResponse.json(
       {
