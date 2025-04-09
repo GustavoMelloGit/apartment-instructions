@@ -1,5 +1,6 @@
 import { db } from '@/db/connection';
-import { stays } from '@/db/schema';
+import { guests, stays } from '@/db/schema';
+import { eq } from 'drizzle-orm';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 
@@ -24,6 +25,15 @@ export async function POST(request: Request): Promise<Response> {
   const { data } = parsedInput;
 
   try {
+    const guest = await db
+      .select()
+      .from(guests)
+      .where(eq(guests.id, data.guest_id));
+
+    if (!guest.length) {
+      return NextResponse.json({ error: 'Guest not found' }, { status: 404 });
+    }
+
     const stay = {
       id: crypto.randomUUID(),
       check_in: data.check_in.toISOString(),
