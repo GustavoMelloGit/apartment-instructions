@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang='pt-BR' className={roboto.variable}>
+    <html lang='pt-BR' className={`${roboto.variable} dark`}>
       <body className='font-main antialiased'>{children}</body>
     </html>
   );
