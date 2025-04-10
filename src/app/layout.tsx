@@ -1,7 +1,12 @@
+import Clarity from '@microsoft/clarity';
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import { PropsWithChildren } from 'react';
 import './globals.css';
+
+const projectId = 'r1pgueco5e';
+
+Clarity.init(projectId);
 
 const roboto = Roboto({
   variable: '--font-roboto',
