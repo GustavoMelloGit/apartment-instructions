@@ -49,13 +49,13 @@ export const StayView: FC<Props> = ({ stay }) => {
               <br />
               Complemento: Ed. Bandeira Azul, Ap. 201
             </p>
-            <a
-              className='underline'
-              href='https://maps.app.goo.gl/qtJszgeturfyeqDL7'
-              target='_blank'
-            >
-              Clique aqui para abrir o mapa
-            </a>
+            <iframe
+              src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d932.2379714097891!2d-40.62667!3d-20.8336493!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb8e2a2fdfd4037%3A0x279932b7f21eb269!2sR.%20Salma%20Souki%20Oliveira%2C%20707-639%20-%20Guanabara%2C%20Anchieta%20-%20ES%2C%2029230-000!5e0!3m2!1spt-BR!2sbr!4v1744243351464!5m2!1spt-BR!2sbr'
+              className='border-none w-full mt-1 mb-4'
+              allowFullScreen={false}
+              loading='lazy'
+              referrerPolicy='no-referrer-when-downgrade'
+            ></iframe>
           </div>
 
           <div>
@@ -79,10 +79,12 @@ export const StayView: FC<Props> = ({ stay }) => {
               <a className='underline' href='tel:+5528999849054'>
                 +55 28 99984-9054
               </a>
+              .
               <br />A sua senha para entrar no apartamento é{' '}
-              <strong>{stay.password}</strong>. Não se preocupe, essa senha é
-              gerada para cada inquilino e deixa de funcionar imediatamente após
-              o horário de check-out do mesmo.
+              <strong>{stay.password}</strong>. <br />
+              <br />
+              Não se preocupe, essa senha é gerada para cada inquilino e deixa
+              de funcionar imediatamente após o horário de check-out do mesmo.
             </p>
           </div>
           <div>
