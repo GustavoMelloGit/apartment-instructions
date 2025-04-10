@@ -26,8 +26,8 @@ export const StayView: FC<Props> = ({ stay }) => {
           Olá, <b>{stay.guest.name}</b>
         </h1>
         <h2>
-          Estamos muito felizes com a sua reserva, e para que ela seja ainda
-          melhor, aqui você poderá consultar algumas instruções:
+          Que bom ter você com a gente! Para tornar sua estadia ainda mais
+          tranquila, reunimos aqui algumas informações importantes:
         </h2>
       </div>
 
@@ -67,15 +67,13 @@ export const StayView: FC<Props> = ({ stay }) => {
           <div>
             <h4>Como realizar o check-in</h4>
             <p>
-              O check-in será realizado pelo co-anfitrião Paulo, ele irá
-              recebê-los e entregar as chaves do condomínio.
+              O co-anfitrião Paulo fará seu check-in, entregando as chaves do
+              condomínio.
               <br />
-              Para isso, é{' '}
-              <strong>
-                muito importante que seja comunicado com ele o horário da sua
-                chegada
-              </strong>
-              . Número de contato do Paulo:{' '}
+              Por isso,{' '}
+              <strong>avise o horário da sua chegada com antecedência.</strong>
+              <br />
+              Número de contato do Paulo:{' '}
               <a className='underline' href='tel:+5528999849054'>
                 +55 28 99984-9054
               </a>
@@ -85,17 +83,16 @@ export const StayView: FC<Props> = ({ stay }) => {
               <p>
                 Sua senha da fechadura eletrônica é:{' '}
                 <strong>{stay.password}</strong>. <br />
-                Essa senha é única para cada inquilino e fica inválida
-                imediatamente após o horário de check-out.
+                Ela é exclusiva da sua estadia e será desativada logo após o
+                check-out.
               </p>
             </div>
           </div>
           <div>
             <h4>Como realizar o check-out</h4>
             <p>
-              O coanfitrião também será o responsável pelo check-out, portanto é
-              necessário que comuniquem o horário de saída para que seja
-              entregue as chaves.
+              O co-anfitrião também fará o check-out. Avise o horário da saída
+              para combinarem a devolução das chaves.
             </p>
           </div>
         </section>
@@ -107,22 +104,16 @@ export const StayView: FC<Props> = ({ stay }) => {
             </div>
             <Separator />
           </div>
-          <ul>
+          <ul className='space-y-2'>
+            <li>🚗 Use apenas a vaga 201 na garagem.</li>
+            <li>🐶 Pets só com autorização prévia do anfitrião.</li>
             <li>
-              O apartamento possui 1 (uma) vaga de garagem e deve ser utilizada
-              apenas a vaga do apartamento, a vaga 201.
+              👥 Apenas os hóspedes combinados devem permanecer no imóvel.
             </li>
+            <li>🔐 Mantenha as portas do condomínio sempre fechadas.</li>
             <li>
-              É proibida a entrada de pets sem o prévio acordo com o anfitrião.
-            </li>
-            <li>
-              É proibida a estadia de mais pessoas do que a acordada com o
-              anfitrião.
-            </li>
-            <li>Preze por sempre manter as portas do condomínios fechadas.</li>
-            <li>
-              Caso quebre ou encontre algo quebrado/defeituoso, comunique
-              imediatamente o anfitrião e/ou coanfitrião.
+              🔧 Se algo estiver quebrado ou apresentar problemas, informe
+              imediatamente.
             </li>
           </ul>
         </section>
@@ -139,10 +130,9 @@ export const StayView: FC<Props> = ({ stay }) => {
             <div>
               <ul className='space-y-2'>
                 <li>
-                  <b>Para digitar a senha:</b> Encoste a mão na parte superior
-                  da fechadura até que os números brilhem. Após isso, digite a
-                  sua senha e aperte #. Caso tenha errado algum digito,
-                  pressione * para apagar.
+                  <b>Digite a senha:</b> toque na parte superior da fechadura
+                  até os números acenderem. Em seguida, insira sua senha e
+                  aperte &quot;#&quot;.
                 </li>
                 <iframe
                   className='w-full aspect-video'
@@ -153,9 +143,9 @@ export const StayView: FC<Props> = ({ stay }) => {
                   allowFullScreen
                 ></iframe>
                 <li>
-                  <b>Para evitar transtornos:</b> Não utilize o pequeno
-                  &quot;interruptor&quot; em baixo da maçaneta do lado de
-                  dentro, mantenha ele sempre pra baixo.
+                  <b>Evite problemas:</b> mantenha o pequeno
+                  &quot;interruptor&quot; abaixo da maçaneta (lado de dentro)
+                  sempre na posição para baixo.
                 </li>
               </ul>
             </div>
