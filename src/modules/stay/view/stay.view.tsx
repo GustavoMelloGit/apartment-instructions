@@ -20,7 +20,7 @@ export const StayView: FC<Props> = ({ stay }) => {
   const checkOutDate = dateFormatter.format(new Date(stay.check_out));
 
   return (
-    <div className='space-y-4'>
+    <div className='space-y-4 pb-10'>
       <div className='space-y-2'>
         <h1 className='text-lg'>
           Olá, <b>{stay.guest.name}</b>
@@ -31,7 +31,7 @@ export const StayView: FC<Props> = ({ stay }) => {
         </h2>
       </div>
 
-      <div className='text-sm space-y-3 [&>section]:space-y-2 [&_h4]:font-bold [&_h4]:text-md [&_.title]:flex [&_.title]:gap-1 [&_.title]:items-center'>
+      <div className='text-sm space-y-3 [&>section]:space-y-2 [&_h4]:font-bold [&_h4]:text-base [&_.title]:flex [&_.title]:gap-1 [&_.title]:items-center'>
         <section>
           <div>
             <div className='title'>
@@ -79,13 +79,16 @@ export const StayView: FC<Props> = ({ stay }) => {
               <a className='underline' href='tel:+5528999849054'>
                 +55 28 99984-9054
               </a>
-              .
-              <br />A sua senha para entrar no apartamento é{' '}
-              <strong>{stay.password}</strong>. <br />
-              <br />
-              Não se preocupe, essa senha é gerada para cada inquilino e deixa
-              de funcionar imediatamente após o horário de check-out do mesmo.
             </p>
+            <div className='ring-2 flex gap-2 p-2 rounded-sm mt-1 ring-blue-800 bg-blue-500 text-white'>
+              <Info size={16} className='min-w-4 mt-1' />
+              <p>
+                Sua senha da fechadura eletrônica é:{' '}
+                <strong>{stay.password}</strong>. <br />
+                Essa senha é única para cada inquilino e fica inválida
+                imediatamente após o horário de check-out.
+              </p>
+            </div>
           </div>
           <div>
             <h4>Como realizar o check-out</h4>
@@ -131,28 +134,28 @@ export const StayView: FC<Props> = ({ stay }) => {
             </div>
             <Separator />
           </div>
-          <div>
+          <div className='space-y-2'>
             <h4>Fechadura eletrônica</h4>
             <div>
-              <p>
-                A fechadura eletrônica é muito segura e prática e para
-                utilizá-la da forma correta, fique atento às seguintes
-                observações:
-              </p>
-              <ul>
+              <ul className='space-y-2'>
                 <li>
-                  Não é necessário trancar a porta do lado de fora, ela se
-                  tranca sozinha.
+                  <b>Para digitar a senha:</b> Encoste a mão na parte superior
+                  da fechadura até que os números brilhem. Após isso, digite a
+                  sua senha e aperte #. Caso tenha errado algum digito,
+                  pressione * para apagar.
                 </li>
+                <iframe
+                  className='w-full aspect-video'
+                  src='https://www.youtube.com/embed/Y8eaU1zkkB8'
+                  title='Tuya APP WIFI Fechadura Digital de Sobrepor, Fechadura Eletronica Fechaduras Digital de Embutir'
+                  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                  referrerPolicy='strict-origin-when-cross-origin'
+                  allowFullScreen
+                ></iframe>
                 <li>
-                  Do lado de dentro, para reforçar a tranca, levemente faça o
-                  movimento contrário de abrir a maçaneta, ou seja, levante ela.
-                  Isso irá trancar reforçar a tranca da porta.
-                </li>
-                <li>
-                  Para evitar transtornos, não utilize o pequeno
+                  <b>Para evitar transtornos:</b> Não utilize o pequeno
                   &quot;interruptor&quot; em baixo da maçaneta do lado de
-                  dentro, mantenha sempre ele pro ícone de cadeado destrancado.
+                  dentro, mantenha ele sempre pra baixo.
                 </li>
               </ul>
             </div>
