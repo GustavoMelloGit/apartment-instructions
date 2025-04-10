@@ -67,8 +67,8 @@ export const StayView: FC<Props> = ({ stay }) => {
           <div>
             <h4>Como realizar o check-in</h4>
             <p>
-              O check-in será realizado pelo Paulo, meu coanfitrião, onde ele
-              irá recebê-los e entregar as chaves do condomínio.
+              O check-in será realizado pelo co-anfitrião Paulo, ele irá
+              recebê-los e entregar as chaves do condomínio.
               <br />
               Para isso, é{' '}
               <strong>
