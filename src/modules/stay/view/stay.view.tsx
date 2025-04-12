@@ -100,9 +100,7 @@ export const StayView: FC<Props> = ({ stay }) => {
               </div>
             </div>
             <p>
-              O co-anfitrião acompanhará seu check-in e check-out.
-              <br />
-              Por isso,{' '}
+              O co-anfitrião acompanhará seu check-in e check-out. Por isso,{' '}
               <strong>avise o horário da sua chegada com antecedência.</strong>
             </p>
             <p>
