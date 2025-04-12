@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang='pt-BR' className={`${roboto.variable} dark`}>
+    <html lang='pt-BR' className={`${roboto.variable}`}>
       <body className='font-main antialiased'>
         <Script id='clarity-script' strategy='afterInteractive'>
           {`(function(c,l,a,r,i,t,y){
