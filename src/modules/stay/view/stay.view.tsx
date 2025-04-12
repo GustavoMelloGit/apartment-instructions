@@ -37,6 +37,7 @@ export const StayView: FC<Props> = ({ stay }) => {
         width={764}
         height={429}
         quality={100}
+        loading='eager'
       />
       <div className='px-4 pb-10 space-y-4'>
         <div className='space-y-1'>
@@ -164,14 +165,16 @@ export const StayView: FC<Props> = ({ stay }) => {
                   até os números acenderem. Em seguida, insira sua senha e
                   aperte &quot;#&quot;.
                 </li>
-                <iframe
-                  className='w-full aspect-video'
-                  src='https://www.youtube.com/embed/Y8eaU1zkkB8'
-                  title='Tuya APP WIFI Fechadura Digital de Sobrepor, Fechadura Eletronica Fechaduras Digital de Embutir'
-                  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-                  referrerPolicy='strict-origin-when-cross-origin'
-                  allowFullScreen
-                ></iframe>
+                <li>
+                  <iframe
+                    className='w-full aspect-video'
+                    src='https://www.youtube.com/embed/Y8eaU1zkkB8'
+                    title='Tuya APP WIFI Fechadura Digital de Sobrepor, Fechadura Eletronica Fechaduras Digital de Embutir'
+                    allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                    referrerPolicy='strict-origin-when-cross-origin'
+                    allowFullScreen
+                  ></iframe>
+                </li>
                 <li>
                   <b>Evite problemas:</b> mantenha o pequeno
                   &quot;interruptor&quot; abaixo da maçaneta (lado de dentro)
