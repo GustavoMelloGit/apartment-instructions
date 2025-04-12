@@ -1,5 +1,14 @@
+import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { Info, MapPinned, ScrollText } from 'lucide-react';
+import {
+  CarFront,
+  DoorClosed,
+  MapPin,
+  PawPrint,
+  Users,
+  Wrench,
+} from 'lucide-react';
+import Image from 'next/image';
 import { FC } from 'react';
 import { GetStayOutput } from '../services/stay.dto';
 
@@ -20,135 +29,152 @@ export const StayView: FC<Props> = ({ stay }) => {
   const checkOutDate = dateFormatter.format(new Date(stay.check_out));
 
   return (
-    <div className='space-y-4 pb-10'>
+    <div className='space-y-4 pb-10 leading-none'>
+      <Image
+        src='/stay-image.jpeg'
+        alt='apartamento 201 - Praia dos Castelhanos'
+        className='rounded-2xl'
+        width={764}
+        height={429}
+        quality={100}
+      />
       <div className='space-y-2'>
-        <h1 className='text-lg'>
-          Olá, <b>{stay.guest.name}</b>
-        </h1>
-        <h2>
+        <h1 className='text-xl font-bold'>Olá, {stay.guest.name}</h1>
+        <h2 className='leading-snug'>
           Que bom ter você com a gente! Para tornar sua estadia ainda mais
           tranquila, reunimos aqui algumas informações importantes:
         </h2>
       </div>
 
-      <div className='text-sm space-y-3 [&>section]:space-y-2 [&_h4]:font-bold [&_h4]:text-base [&_.title]:flex [&_.title]:gap-1 [&_.title]:items-center'>
+      <div className='space-y-3 [&>section]:space-y-2 [&_h3]:font-semibold'>
         <section>
-          <div>
-            <div className='title'>
-              <MapPinned size={18} />
-              <h3 className='text-lg font-black'>Sobre como chegar</h3>
-            </div>
-            <Separator />
-          </div>
-
-          <div>
-            <h4>Endereço</h4>
-            <p>
-              Rua: R. Salma Souki Oliveira, S/N <br />
-              Bairro: Praia dos Castelhanos
-              <br />
-              Complemento: Ed. Bandeira Azul, Ap. 201
-            </p>
-            <iframe
-              src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d932.2379714097891!2d-40.62667!3d-20.8336493!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb8e2a2fdfd4037%3A0x279932b7f21eb269!2sR.%20Salma%20Souki%20Oliveira%2C%20707-639%20-%20Guanabara%2C%20Anchieta%20-%20ES%2C%2029230-000!5e0!3m2!1spt-BR!2sbr!4v1744243351464!5m2!1spt-BR!2sbr'
-              className='border-none w-full mt-1 mb-4'
-              allowFullScreen={false}
-              loading='lazy'
-              referrerPolicy='no-referrer-when-downgrade'
-            ></iframe>
-          </div>
-
-          <div>
-            <h4>Horários</h4>
-            <p>Check-in (à partir de): {checkInDate}</p>
-            <p>Check-out (até): {checkOutDate}</p>
-          </div>
-
-          <div>
-            <h4>Como realizar o check-in</h4>
-            <p>
-              O co-anfitrião Paulo fará seu check-in, entregando as chaves do
-              condomínio.
-              <br />
-              Por isso,{' '}
-              <strong>avise o horário da sua chegada com antecedência.</strong>
-              <br />
-              Número de contato do Paulo:{' '}
-              <a className='underline' href='tel:+5528999849054'>
-                +55 28 99984-9054
-              </a>
-            </p>
-            <div className='ring-2 flex gap-2 p-2 rounded-sm mt-1 ring-blue-800 bg-blue-500 text-white'>
-              <Info size={16} className='min-w-4 mt-1' />
+          <h3>COMO CHEGAR</h3>
+          <div className='flex gap-2'>
+            <MapPin size={20} className='min-w-5' />
+            <div className='space-y-1'>
+              <h4 className='font-semibold'>Endereço</h4>
               <p>
-                Sua senha da fechadura eletrônica é:{' '}
-                <strong>{stay.password}</strong>. <br />
-                Ela é exclusiva da sua estadia e será desativada logo após o
-                check-out.
+                Rua Salma Souki Oliveira, S/N, Praia dos Castelhanos.
+                <br />
+                Ed. Bandeira Azul, Ap. 201
               </p>
             </div>
           </div>
-          <div>
-            <h4>Como realizar o check-out</h4>
-            <p>
-              O co-anfitrião também fará o check-out. Avise o horário da saída
-              para combinarem a devolução das chaves.
-            </p>
+          <Button variant='outline' className='border-cyan-600 w-full' asChild>
+            <a
+              href='https://maps.app.goo.gl/S5G5VZWHwgY7jZtR8'
+              target='_blank'
+              referrerPolicy='no-referrer'
+            >
+              Abrir no Google Maps
+            </a>
+          </Button>
+        </section>
+        <Separator />
+        <section>
+          <h3>CHECK-IN & CHECK-OUT</h3>
+
+          <div className='grid grid-cols-2 ring ring-neutral-300 border-neutral-300 rounded-lg [&>div]:p-2 [&>div]:space-y-0.5 [&_.value]:font-light [&_.label]:font-medium'>
+            <div className='border-b border-r border-inherit'>
+              <p className='label'>Após</p>
+              <span className='value'>{checkInDate}</span>
+            </div>
+            <div className='border-b border-inherit'>
+              <p className='label'>Até</p>
+              <span className='value'>{checkOutDate}</span>
+            </div>
+            <div className='border-r border-inherit'>
+              <p className='label'>Co-anfitrião</p>
+              <a className='underline value' href='tel:+5528999849054'>
+                +55 28 99984-9054
+              </a>
+            </div>
+            <div>
+              <p className='label'>Senha</p>
+              <span className='value'>{stay.password}</span>
+            </div>
+          </div>
+          <p>
+            O co-anfitrião acompanhará seu check-in e check-out.
+            <br />
+            Por isso,{' '}
+            <strong>avise o horário da sua chegada com antecedência.</strong>
+          </p>
+          <p>
+            Sua senha da fechadura eletrônica é:{' '}
+            <strong>{stay.password}</strong>. <br />
+            Ela é exclusiva da sua estadia e será desativada automaticamente
+            logo após o check-out.
+          </p>
+        </section>
+        <Separator />
+        <section>
+          <h3>WIFI</h3>
+          <div className='grid grid-cols-2 ring ring-neutral-300 border-neutral-300 rounded-lg [&>div]:p-2 [&>div]:space-y-0.5 [&_.value]:font-light [&_.label]:font-medium'>
+            <div className='border-r border-inherit'>
+              <p className='label'>Nome</p>
+              <span className='value'>WIFI_BANDEIRA</span>
+            </div>
+            <div>
+              <p className='label'>Senha</p>
+              <span className='value'>wmag2907</span>
+            </div>
           </div>
         </section>
+        <Separator />
         <section>
-          <div>
-            <div className='title'>
-              <ScrollText size={18} />
-              <h3 className='text-lg font-black'>Regras</h3>
-            </div>
-            <Separator />
-          </div>
-          <ul className='space-y-2'>
-            <li>🚗 Use apenas a vaga 201 na garagem.</li>
-            <li>🐶 Pets só com autorização prévia do anfitrião.</li>
+          <h3>REGRAS DA CASA</h3>
+          <ul className='[&>li]:flex [&>li]:gap-1  [&_svg]:min-w-5 space-y-2'>
             <li>
-              👥 Apenas os hóspedes combinados devem permanecer no imóvel.
+              <CarFront size={20} /> <span>Use apenas a vaga 201.</span>
             </li>
-            <li>🔐 Mantenha as portas do condomínio sempre fechadas.</li>
             <li>
-              🔧 Se algo estiver quebrado ou apresentar problemas, informe
-              imediatamente.
+              <PawPrint size={20} />{' '}
+              <span>Pets só com autorização prévia do anfitrião.</span>
+            </li>
+            <li>
+              <Users size={20} />{' '}
+              <span>
+                Apenas os hóspedes combinados devem permanecer no imóvel.
+              </span>
+            </li>
+            <li>
+              <DoorClosed size={20} />{' '}
+              <span>Mantenha as portas do condomínio sempre fechadas.</span>
+            </li>
+            <li>
+              <Wrench size={20} />{' '}
+              <span>
+                Se algo estiver quebrado ou apresentar problemas, informe
+                imediatamente.
+              </span>
             </li>
           </ul>
         </section>
+        <Separator />
         <section>
-          <div>
-            <div className='title'>
-              <Info size={18} />
-              <h3 className='text-lg font-black'>Instruções extras</h3>
-            </div>
-            <Separator />
-          </div>
+          <h3>FECHADURA ELETRÔNICA</h3>
           <div className='space-y-2'>
-            <h4>Fechadura eletrônica</h4>
-            <div>
-              <ul className='space-y-2'>
-                <li>
-                  <b>Digite a senha:</b> toque na parte superior da fechadura
-                  até os números acenderem. Em seguida, insira sua senha e
-                  aperte &quot;#&quot;.
-                </li>
-                <iframe
-                  className='w-full aspect-video'
-                  src='https://www.youtube.com/embed/Y8eaU1zkkB8'
-                  title='Tuya APP WIFI Fechadura Digital de Sobrepor, Fechadura Eletronica Fechaduras Digital de Embutir'
-                  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-                  referrerPolicy='strict-origin-when-cross-origin'
-                  allowFullScreen
-                ></iframe>
-                <li>
-                  <b>Evite problemas:</b> mantenha o pequeno
-                  &quot;interruptor&quot; abaixo da maçaneta (lado de dentro)
-                  sempre na posição para baixo.
-                </li>
-              </ul>
-            </div>
+            <ul className='space-y-2'>
+              <li>
+                <b>Digite a senha:</b> toque na parte superior da fechadura até
+                os números acenderem. Em seguida, insira sua senha e aperte
+                &quot;#&quot;.
+              </li>
+              <iframe
+                className='w-full aspect-video'
+                src='https://www.youtube.com/embed/Y8eaU1zkkB8'
+                title='Tuya APP WIFI Fechadura Digital de Sobrepor, Fechadura Eletronica Fechaduras Digital de Embutir'
+                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                referrerPolicy='strict-origin-when-cross-origin'
+                allowFullScreen
+              ></iframe>
+              <li>
+                <b>Evite problemas:</b> mantenha o pequeno
+                &quot;interruptor&quot; abaixo da maçaneta (lado de dentro)
+                sempre na posição para baixo.
+              </li>
+            </ul>
           </div>
         </section>
       </div>
