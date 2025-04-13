@@ -20,13 +20,15 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang='pt-BR' className={`${roboto.variable}`}>
       <body className='font-main antialiased'>
-        <Script id='clarity-script' strategy='afterInteractive'>
-          {`(function(c,l,a,r,i,t,y){
+        {process.env.NODE_ENV !== 'development' && (
+          <Script id='clarity-script' strategy='afterInteractive'>
+            {`(function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "r1pgueco5e");`}
-        </Script>
+          </Script>
+        )}
         {children}
       </body>
     </html>
