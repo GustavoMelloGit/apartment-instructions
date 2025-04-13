@@ -1,56 +1,6 @@
-import { db } from '@/db/firebase';
-import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
-import { NextResponse } from 'next/server';
-import { z } from 'zod';
-
-const inputSchema = z.object({
-  guests: z.number().gt(0),
-  guest_id: z.string().uuid(),
-  password: z.string(),
-  check_in: z.coerce.date(),
-  check_out: z.coerce.date(),
-});
+import { makeCreateStayController } from '@/api/infra/di/stay/create_stay_di';
 
 export async function POST(request: Request): Promise<Response> {
-  const requestJson = await request.json();
-
-  const parsedInput = inputSchema.safeParse(requestJson);
-
-  if (!parsedInput.success) {
-    const errors = parsedInput.error.flatten();
-    return NextResponse.json({ error: errors.fieldErrors }, { status: 422 });
-  }
-
-  const { data } = parsedInput;
-
-  try {
-    const q = query(collection(db, 'guests'), where('id', '==', data.guest_id));
-    const querySnapshot = await getDocs(q);
-
-    if (querySnapshot.empty) {
-      return NextResponse.json({ error: 'Guest not found' }, { status: 404 });
-    }
-
-    const stay = {
-      id: crypto.randomUUID(),
-      check_in: data.check_in.toISOString(),
-      check_out: data.check_out.toISOString(),
-      guest_id: data.guest_id,
-      guests: data.guests,
-      password: data.password,
-    };
-    await addDoc(collection(db, 'stays'), stay);
-
-    return NextResponse.json(
-      {
-        message: 'Stay created successfully',
-        data: stay,
-      },
-      { status: 200 }
-    );
-  } catch (e) {
-    console.error(e);
-    const error = e as Error;
-    return NextResponse.json({ error: error.message }, { status: 400 });
-  }
+  const controller = makeCreateStayController();
+  return controller.handle(request);
 }
