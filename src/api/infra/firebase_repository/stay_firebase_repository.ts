@@ -25,8 +25,7 @@ export class StayFirebaseRepository implements StayRepository {
     }
 
     const stay = staySnap.data();
-
-    const tenantRef = stay.guest_id;
+    const tenantRef = stay.tenant_id;
     const tenantSnap = await getDoc(tenantRef);
     const tenant = {
       id: tenantRef.id,
@@ -54,15 +53,12 @@ export class StayFirebaseRepository implements StayRepository {
   }
 
   async save(input: SaveStayDto): Promise<SaveStayDto> {
-    console.log({ id: input.tenant_id });
-    console.log({ input });
-    const guestRef = doc(db, 'guests', input.tenant_id);
-    console.log('morreu');
+    const tenantRef = doc(db, 'guests', input.tenant_id);
 
     const stay = {
       check_in: input.check_in.toISOString(),
       check_out: input.check_out.toISOString(),
-      guest_id: guestRef,
+      tenant_id: tenantRef,
       guests: input.guests,
       password: input.password,
     };

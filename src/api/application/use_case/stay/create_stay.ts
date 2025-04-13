@@ -34,7 +34,7 @@ export class CreateStayUseCase implements UseCase<Input, Output> {
     ]);
 
     if (!tenant) {
-      throw new ResourceNotFoundError('Guest');
+      throw new ResourceNotFoundError('Tenant');
     }
     if (hasUsedPassword) {
       throw new ValidationError('Invalid password');
