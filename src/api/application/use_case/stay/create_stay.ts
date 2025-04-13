@@ -1,5 +1,5 @@
-import { ResourceNotFoundError } from '@/api/domain/error/resource_not_found_error';
-import { ValidationError } from '@/api/domain/error/validation_error';
+import { ResourceNotFoundError } from '@/api/application/error/resource_not_found_error';
+import { ValidationError } from '@/api/application/error/validation_error';
 import { StayRepository } from '@/api/domain/repository/stay_repository';
 import { TenantRepository } from '@/api/domain/repository/tenant_repository';
 import { UseCase } from '../use_case';
