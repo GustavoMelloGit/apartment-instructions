@@ -1,6 +1,7 @@
-import { makeCreateStayController } from '@/api/infra/di/stay/create_stay_di';
+import { StayDi } from '@/api/infra/di/stay_di';
 
 export async function POST(request: Request): Promise<Response> {
-  const controller = makeCreateStayController();
+  const di = new StayDi();
+  const controller = di.makeCreateStayController();
   return controller.handle(request);
 }

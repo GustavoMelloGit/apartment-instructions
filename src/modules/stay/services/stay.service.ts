@@ -1,6 +1,6 @@
 'use server';
 
-import { StayDi } from '@/api/infra/di/stay/stay_di';
+import { StayDi } from '@/api/infra/di/stay_di';
 import { GetStayOutput, getStayOutputSchema } from './stay.dto';
 
 export async function getStay(stay_id: string): Promise<GetStayOutput> {

@@ -1,6 +1,7 @@
-import { makeCreateTenantController } from '@/api/infra/di/tenant/create_tenant_di';
+import { TenantDi } from '@/api/infra/di/tenant_di';
 
 export async function POST(request: Request): Promise<Response> {
-  const controller = makeCreateTenantController();
+  const di = new TenantDi();
+  const controller = di.makeCreateTenantController();
   return controller.handle(request);
 }
