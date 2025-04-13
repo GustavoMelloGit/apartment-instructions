@@ -33,19 +33,13 @@ export class GetStayUseCase implements UseCase<Input, Output> {
       throw new ResourceNotFoundError('Stay');
     }
 
-    const tenant = await this.tenantRepository.findById(stay.guest_id);
-
-    if (!tenant) {
-      throw new ResourceNotFoundError('Tenant');
-    }
-
     return {
       id: stay.id,
       check_in: stay.check_in.toISOString(),
       check_out: stay.check_out.toISOString(),
       guests: stay.guests,
       password: stay.password,
-      tenant,
+      tenant: stay.tenant,
     };
   }
 }

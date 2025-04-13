@@ -1,7 +1,9 @@
+import { Tenant } from './tenant';
+
 export type Stay = {
   check_in: Date;
   check_out: Date;
-  guest_id: string;
+  tenant: Tenant;
   guests: number;
   id: string;
   password: string;
