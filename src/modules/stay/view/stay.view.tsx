@@ -41,7 +41,7 @@ export const StayView: FC<Props> = ({ stay }) => {
       />
       <div className='px-4 pb-10 space-y-4'>
         <div className='space-y-1'>
-          <h1 className='text-xl font-bold'>Olá, {stay.guest.name}</h1>
+          <h1 className='text-xl font-bold'>Olá, {stay.tenant.name}</h1>
           <h2 className='leading-tight'>
             Que bom ter você com a gente! Para tornar sua estadia ainda mais
             tranquila, reunimos aqui algumas informações importantes:

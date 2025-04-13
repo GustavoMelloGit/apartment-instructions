@@ -1,9 +1,36 @@
 import { Stay } from '@/api/domain/entity/stay';
 import { StayRepository } from '@/api/domain/repository/stay_repository';
-import { db } from '@/db/firebase';
-import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '@/api/infra/db/firebase';
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+} from 'firebase/firestore';
 
 export class StayFirebaseRepository implements StayRepository {
+  async findById(id: string): Promise<Stay | null> {
+    const docRef = doc(db, 'stays', id);
+    const docSnap = await getDoc(docRef);
+
+    if (!docSnap.exists()) {
+      return null;
+    }
+
+    const docData = docSnap.data();
+
+    return {
+      check_in: new Date(docData.check_in),
+      check_out: new Date(docData.check_out),
+      guest_id: docData.guest_id,
+      guests: docData.guests,
+      id: docData.id,
+      password: docData.password,
+    } satisfies Stay;
+  }
   async findByPassword(password: string): Promise<Stay | null> {
     const q = query(collection(db, 'stays'), where('password', '==', password));
     const querySnapshot = await getDocs(q);

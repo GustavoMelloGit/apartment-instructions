@@ -1,4 +1,4 @@
-import { db } from '@/db/firebase';
+import { db } from '@/api/infra/db/firebase';
 import { getStay } from '@/modules/stay/services/stay.service';
 import { StayView } from '@/modules/stay/view/stay.view';
 import { collection, getDocs } from 'firebase/firestore';

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const guestSchema = z.object({
+export const tenantSchema = z.object({
   id: z.string(),
   name: z.string(),
   phone: z.string(),
@@ -8,7 +8,7 @@ export const guestSchema = z.object({
 
 export const getStayOutputSchema = z.object({
   id: z.string(),
-  guest: guestSchema,
+  tenant: tenantSchema,
   guests: z.number(),
   check_in: z.coerce.date(),
   check_out: z.coerce.date(),

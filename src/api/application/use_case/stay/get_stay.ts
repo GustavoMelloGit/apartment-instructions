@@ -1,0 +1,51 @@
+import { ResourceNotFoundError } from '@/api/domain/error/resource_not_found_error';
+import { StayRepository } from '@/api/domain/repository/stay_repository';
+import { TenantRepository } from '@/api/domain/repository/tenant_repository';
+import { UseCase } from '../use_case';
+
+type Input = {
+  stay_id: string;
+};
+
+type Output = {
+  check_in: string;
+  check_out: string;
+  guests: number;
+  id: string;
+  password: string;
+  tenant: {
+    id: string;
+    name: string;
+    phone: string;
+  };
+};
+
+export class GetStayUseCase implements UseCase<Input, Output> {
+  constructor(
+    private readonly stayRepository: StayRepository,
+    private readonly tenantRepository: TenantRepository
+  ) {}
+
+  async execute(input: Input): Promise<Output> {
+    const stay = await this.stayRepository.findById(input.stay_id);
+
+    if (!stay) {
+      throw new ResourceNotFoundError('Stay');
+    }
+
+    const tenant = await this.tenantRepository.findById(stay.guest_id);
+
+    if (!tenant) {
+      throw new ResourceNotFoundError('Tenant');
+    }
+
+    return {
+      id: stay.id,
+      check_in: stay.check_in.toISOString(),
+      check_out: stay.check_out.toISOString(),
+      guests: stay.guests,
+      password: stay.password,
+      tenant,
+    };
+  }
+}

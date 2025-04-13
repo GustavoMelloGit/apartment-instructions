@@ -1,6 +1,6 @@
 import { Tenant } from '@/api/domain/entity/tenant';
 import { TenantRepository } from '@/api/domain/repository/tenant_repository';
-import { db } from '@/db/firebase';
+import { db } from '@/api/infra/db/firebase';
 import {
   addDoc,
   and,
