@@ -5,7 +5,7 @@ import { Controller } from '../controller';
 
 const inputSchema = z.object({
   guests: z.number().gt(0),
-  guest_id: z.string().uuid(),
+  guest_id: z.string().length(20),
   password: z.string(),
   check_in: z.coerce.date(),
   check_out: z.coerce.date(),

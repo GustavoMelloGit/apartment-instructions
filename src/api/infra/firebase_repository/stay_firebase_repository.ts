@@ -31,6 +31,7 @@ export class StayFirebaseRepository implements StayRepository {
       password: docData.password,
     } satisfies Stay;
   }
+
   async findByPassword(password: string): Promise<Stay | null> {
     const q = query(collection(db, 'stays'), where('password', '==', password));
     const querySnapshot = await getDocs(q);
@@ -40,20 +41,21 @@ export class StayFirebaseRepository implements StayRepository {
     const stay = querySnapshot.docs[0].data();
     return stay as Stay;
   }
+
   async save(input: Omit<Stay, 'id'>): Promise<Stay> {
     const stay = {
-      id: crypto.randomUUID(),
       check_in: input.check_in.toISOString(),
       check_out: input.check_out.toISOString(),
       guest_id: input.guest_id,
       guests: input.guests,
       password: input.password,
     };
-    await addDoc(collection(db, 'stays'), stay);
+    const docRef = await addDoc(collection(db, 'stays'), stay);
     return {
       ...stay,
       check_in: input.check_in,
       check_out: input.check_out,
+      id: docRef.id,
     };
   }
 }

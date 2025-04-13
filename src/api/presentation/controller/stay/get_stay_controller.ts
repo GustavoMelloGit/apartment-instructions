@@ -32,6 +32,7 @@ export class GetStayController implements Controller<Input> {
     const output = await this.useCase.execute({
       stay_id: validationResponse.stay_id,
     });
+
     return NextResponse.json(output, { status: 200 });
   }
 }
