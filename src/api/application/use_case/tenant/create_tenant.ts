@@ -1,4 +1,4 @@
-import { GuestRepository } from '@/api/domain/repository/guest_repository';
+import { TenantRepository } from '@/api/domain/repository/tenant_repository';
 import { UseCase } from '../use_case';
 
 type Input = {
@@ -12,8 +12,8 @@ type Output = {
   phone: string;
 };
 
-export class CreateGuestUseCase implements UseCase {
-  constructor(private readonly repository: GuestRepository) {}
+export class CreateTenantUseCase implements UseCase {
+  constructor(private readonly repository: TenantRepository) {}
 
   async execute(input: Input): Promise<Output> {
     return this.repository.save(input);

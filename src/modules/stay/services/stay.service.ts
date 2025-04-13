@@ -28,12 +28,12 @@ export async function getStay(stay_id: string): Promise<GetStayOutput> {
   const querySnapshot = await getDocs(q);
 
   if (querySnapshot.empty) {
-    throw new Error('Guest not found');
+    throw new Error('tenant not found');
   }
 
-  const guest = querySnapshot.docs[0].data();
+  const tenant = querySnapshot.docs[0].data();
 
-  const parsedGuest = guestSchema.parse(guest);
+  const parsedGuest = guestSchema.parse(tenant);
 
   const stay: GetStayOutput = {
     check_in: docData.check_in,

@@ -1,4 +1,4 @@
-import { CreateGuestUseCase } from '@/api/application/use_case/guest/create_guest';
+import { CreateTenantUseCase } from '@/api/application/use_case/tenant/create_tenant';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { Controller } from '../controller';
@@ -10,8 +10,8 @@ const schema = z.object({
 
 type Input = z.infer<typeof schema>;
 
-export class CreateGuestController implements Controller<Input> {
-  constructor(private readonly useCase: CreateGuestUseCase) {}
+export class CreateTenantController implements Controller<Input> {
+  constructor(private readonly useCase: CreateTenantUseCase) {}
 
   async validate(request: Request): Promise<Input | Response> {
     const data = await request.json();
@@ -36,7 +36,7 @@ export class CreateGuestController implements Controller<Input> {
 
     return NextResponse.json(
       {
-        message: 'Guest created successfully',
+        message: 'Tenant created successfully',
         data: output,
       },
       { status: 200 }

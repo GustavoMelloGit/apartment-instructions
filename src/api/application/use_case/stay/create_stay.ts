@@ -1,7 +1,7 @@
 import { ResourceNotFoundError } from '@/api/domain/error/resource_not_found_error';
 import { ValidationError } from '@/api/domain/error/validation_error';
-import { GuestRepository } from '@/api/domain/repository/guest_repository';
 import { StayRepository } from '@/api/domain/repository/stay_repository';
+import { TenantRepository } from '@/api/domain/repository/tenant_repository';
 import { UseCase } from '../use_case';
 
 type Input = {
@@ -24,17 +24,16 @@ type Output = {
 export class CreateStayUseCase implements UseCase<Input, Output> {
   constructor(
     private readonly stayRepository: StayRepository,
-    private readonly guestRepository: GuestRepository
+    private readonly guestRepository: TenantRepository
   ) {}
 
   async execute(input: Input): Promise<Output> {
-    const [guest, hasUsedPassword] = await Promise.all([
+    const [tenant, hasUsedPassword] = await Promise.all([
       this.guestRepository.findById(input.guest_id),
       this.stayRepository.findByPassword(input.password),
     ]);
-    console.log({ guest });
 
-    if (!guest) {
+    if (!tenant) {
       throw new ResourceNotFoundError('Guest');
     }
     if (hasUsedPassword) {

@@ -10,8 +10,8 @@ export class StayFirebaseRepository implements StayRepository {
     if (querySnapshot.empty) {
       return null;
     }
-    const guest = querySnapshot.docs[0].data();
-    return guest as Stay;
+    const stay = querySnapshot.docs[0].data();
+    return stay as Stay;
   }
   async save(input: Omit<Stay, 'id'>): Promise<Stay> {
     const stay = {
