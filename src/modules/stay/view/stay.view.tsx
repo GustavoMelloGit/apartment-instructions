@@ -18,6 +18,7 @@ const dateFormatter = Intl.DateTimeFormat('pt-BR', {
   day: '2-digit',
   hour: '2-digit',
   minute: '2-digit',
+  timeZone: 'America/Sao_Paulo',
 });
 
 type Props = {

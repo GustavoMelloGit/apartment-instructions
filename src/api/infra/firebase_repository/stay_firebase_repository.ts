@@ -5,6 +5,7 @@ import {
   StayRepository,
 } from '@/api/domain/repository/stay_repository';
 import { db } from '@/api/infra/db/firebase';
+import { formatISO } from 'date-fns';
 import {
   addDoc,
   collection,
@@ -56,8 +57,8 @@ export class StayFirebaseRepository implements StayRepository {
     const tenantRef = doc(db, 'guests', input.tenant_id);
 
     const stay = {
-      check_in: input.check_in.toISOString(),
-      check_out: input.check_out.toISOString(),
+      check_in: formatISO(input.check_in),
+      check_out: formatISO(input.check_out),
       tenant_id: tenantRef,
       guests: input.guests,
       password: input.password,

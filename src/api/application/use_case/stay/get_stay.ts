@@ -1,6 +1,7 @@
 import { ResourceNotFoundError } from '@/api/application/error/resource_not_found_error';
 import { StayRepository } from '@/api/domain/repository/stay_repository';
 import { TenantRepository } from '@/api/domain/repository/tenant_repository';
+import { formatISO } from 'date-fns';
 import { UseCase } from '../use_case';
 
 type Input = {
@@ -35,8 +36,8 @@ export class GetStayUseCase implements UseCase<Input, Output> {
 
     return {
       id: stay.id,
-      check_in: stay.check_in.toISOString(),
-      check_out: stay.check_out.toISOString(),
+      check_in: formatISO(stay.check_in),
+      check_out: formatISO(stay.check_out),
       guests: stay.guests,
       password: stay.password,
       tenant: stay.tenant,
