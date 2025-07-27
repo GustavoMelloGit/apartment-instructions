@@ -1,7 +1,5 @@
+import { AdminTenantsView } from '@/modules/admin/view/tenants/admin_tenants.view';
+
 export default async function TenantsPage() {
-  return (
-    <div>
-      <p>Hello World</p>
-    </div>
-  );
+  return <AdminTenantsView />;
 }
