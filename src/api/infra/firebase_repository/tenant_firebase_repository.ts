@@ -50,4 +50,20 @@ export class TenantFirebaseRepository implements TenantRepository {
     const querySnapshot = await getDocs(q);
     return !querySnapshot.empty;
   }
+
+  async findAll(): Promise<Tenant[]> {
+    const q = query(collection(db, 'guests'));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs.map((doc) => {
+      const data = doc.data();
+
+      const tenant: Tenant = {
+        id: doc.id,
+        name: data.name,
+        phone: data.phone,
+      };
+
+      return tenant;
+    });
+  }
 }
