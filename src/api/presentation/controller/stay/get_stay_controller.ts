@@ -9,7 +9,7 @@ const inputSchema = z.object({
 
 type Input = z.infer<typeof inputSchema>;
 
-export class GetStayController implements Controller<Input> {
+export class GetStayController implements Controller {
   constructor(private readonly useCase: GetStayUseCase) {}
 
   async validate(request: ControllerRequest): Promise<Response | Input> {

@@ -10,7 +10,7 @@ const schema = z.object({
 
 type Input = z.infer<typeof schema>;
 
-export class CreateTenantController implements Controller<Input> {
+export class CreateTenantController implements Controller {
   constructor(private readonly useCase: CreateTenantUseCase) {}
 
   async validate(request: Request): Promise<Input | Response> {
