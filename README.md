@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Apartment Instructions
+
+This is a Next.js application for managing apartment stays and tenants.
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
+
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The project is organized as follows:
 
-## Learn More
+- `src/app`: Contains the frontend pages of the application.
+- `src/api`: Contains the backend of the application, including use cases, domain entities, repositories, and controllers.
+- `src/components`: Contains reusable UI components.
+- `src/hooks`: Contains custom React hooks.
+- `src/lib`: Contains utility functions, constants, and environment variable handling.
+- `src/modules`: Contains the different modules of the application, such as admin and stay.
+- `public`: Contains static assets, such as images.
 
-To learn more about Next.js, take a look at the following resources:
+## Technologies Used
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js](https://nextjs.org/) - React framework for building full-stack applications.
+- [TypeScript](https://www.typescriptlang.org/) - Typed superset of JavaScript.
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework.
+- [Radix UI](https://www.radix-ui.com/) - Unstyled, accessible UI components.
+- [Lucide React](https://lucide.dev/guide/packages/lucide-react) - Icon library.
+- [Firebase](https://firebase.google.com/) - Platform for building web and mobile applications.
+- [Zod](https://zod.dev/) - TypeScript-first schema validation library.
+- [Axios](https://axios-http.com/) - Promise-based HTTP client for the browser and node.js.
+- [ESLint](https://eslint.org/) - Pluggable and configurable linter tool for identifying and reporting on patterns in JavaScript.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Available Scripts
 
-## Deploy on Vercel
+In the project directory, you can run:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `npm run dev`: Runs the app in the development mode.
+- `npm run build`: Builds the app for production to the `.next` folder.
+- `npm run start`: Starts a Next.js production server.
+- `npm run lint`: Runs ESLint to check for linting errors.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## API Endpoints
+
+The API endpoints are defined in the `src/app/api` directory.
+
+- `POST /api/stay/create`: Creates a new stay.
+- `GET /api/stay/[id]`: Retrieves a stay by its ID.
+- `POST /api/tenant/create`: Creates a new tenant.
+- `GET /api/tenant/list`: Retrieves a list of tenants.
